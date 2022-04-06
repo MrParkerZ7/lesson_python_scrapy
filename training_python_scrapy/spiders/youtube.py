@@ -19,4 +19,3 @@ class RedditScrapy(scrapy.Spider):
 
         with open(f"output/{self.name}.txt", 'w') as file:
             file.write('\n'.join(lines))
-        print('XXX', lines)
