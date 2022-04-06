@@ -3,4 +3,6 @@
 
 ```bash
 $ scrapy crawl reddit
+$ scrapy crawl github
+$ scrapy crawl youtube
 ```

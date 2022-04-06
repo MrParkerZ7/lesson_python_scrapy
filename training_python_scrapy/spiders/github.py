@@ -6,7 +6,7 @@ import scrapy
 
 
 class RedditScrapy(scrapy.Spider):
-    name: str = 'puck'
+    name: str = 'github'
     start_urls: str = ['https://github.com/MrParkerZ7']
 
     def parse(self, response):
@@ -20,5 +20,5 @@ class RedditScrapy(scrapy.Spider):
             elif(url != ''):
                 lines.append(self.start_urls[0] + url)
 
-        with open("output/puck.txt", 'w') as file:
+        with open(f"output/{self.name}.txt", 'w') as file:
             file.write('\n'.join(lines))

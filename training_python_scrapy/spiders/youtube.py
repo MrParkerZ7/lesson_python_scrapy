@@ -10,7 +10,7 @@ class RedditScrapy(scrapy.Spider):
     start_urls: str = ['https://www.youtube.com/']
 
     def parse(self, response):
-        links = response.xpath("//img/@src")
+        links = response.xpath("//link/@href")
         lines: List[str] = []
 
         for link in links:
@@ -19,3 +19,4 @@ class RedditScrapy(scrapy.Spider):
 
         with open(f"output/{self.name}.txt", 'w') as file:
             file.write('\n'.join(lines))
+        print('XXX', lines)

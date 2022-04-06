@@ -22,6 +22,6 @@ class RedditScrapy(scrapy.Spider):
                 """.format(
                     url=url)
 
-                with open(f"output/reddit.html", "w") as page:
+                with open(f"output/{self.name}.html", "w") as page:
                     page.write(html)
                     page.close()
