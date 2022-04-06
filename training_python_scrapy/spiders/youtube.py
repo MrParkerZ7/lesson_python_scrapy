@@ -6,19 +6,16 @@ import scrapy
 
 
 class RedditScrapy(scrapy.Spider):
-    name: str = 'puck'
-    start_urls: str = ['https://github.com/MrParkerZ7']
+    name: str = 'youtube'
+    start_urls: str = ['https://www.youtube.com/']
 
     def parse(self, response):
-        links = response.xpath("//a/@href")
+        links = response.xpath("//img/@src")
         lines: List[str] = []
 
         for link in links:
             url: str = link.get()
-            if(url.startswith('https://')):
-                lines.append(url)
-            elif(url != ''):
-                lines.append(self.start_urls[0] + url)
+            lines.append(url)
 
-        with open("output/puck.txt", 'w') as file:
+        with open(f"output/{self.name}.txt", 'w') as file:
             file.write('\n'.join(lines))
