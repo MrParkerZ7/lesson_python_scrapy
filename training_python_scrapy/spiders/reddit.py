@@ -1,15 +1,14 @@
 from cgitb import html
-from distutils import extension
-import json
 from turtle import ht
 import scrapy
+from scrapy.http.response.html import HtmlResponse
 
 
 class RedditScrapy(scrapy.Spider):
     name: str = 'reddit'
     start_urls: str = ['https://www.reddit.com/r/cats', ]
 
-    def parse(self, response):
+    def parse(self, response: HtmlResponse):
         links = response.xpath("//img/@src")
         html = ""
 

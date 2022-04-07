@@ -1,21 +1,15 @@
-from cgitb import html
-from distutils import extension
-from turtle import ht
-from typing import Iterable, List
+from typing import List
 import scrapy
+from training_python_scrapy.common.save_file import *
+from scrapy.http.response.html import HtmlResponse
 
 
 class RedditScrapy(scrapy.Spider):
     name: str = 'youtube'
     start_urls: str = ['https://www.youtube.com/']
+    fileNo: int = 0
 
-    def parse(self, response):
-        links = response.xpath("//link/@href")
-        lines: List[str] = []
-
-        for link in links:
-            url: str = link.get()
-            lines.append(url)
-
-        with open(f"output/{self.name}.txt", 'w') as file:
-            file.write('\n'.join(lines))
+    def parse(self, response: HtmlResponse, **kwargs):
+        save_lines_to_file(self, response.xpath("//a/@href"))
+        save_lines_to_file(self, response.xpath("//link/@href"))
+        save_lines_to_file(self, response.xpath("//img/@src"))

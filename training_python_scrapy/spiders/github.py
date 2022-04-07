@@ -1,24 +1,12 @@
-from cgitb import html
-from distutils import extension
-from turtle import ht
-from typing import Iterable, List
 import scrapy
+from training_python_scrapy.common.save_file import *
+from scrapy.http.response.html import HtmlResponse
 
 
 class RedditScrapy(scrapy.Spider):
     name: str = 'github'
     start_urls: str = ['https://github.com/MrParkerZ7']
+    fileNo: int = 0
 
-    def parse(self, response):
-        links = response.xpath("//a/@href")
-        lines: List[str] = []
-
-        for link in links:
-            url: str = link.get()
-            if(url.startswith('https://')):
-                lines.append(url)
-            elif(url != ''):
-                lines.append(self.start_urls[0] + url)
-
-        with open(f"output/{self.name}.txt", 'w') as file:
-            file.write('\n'.join(lines))
+    def parse(self, response: HtmlResponse, **kwargs):
+        save_lines_to_file(self, response.xpath("//a/@href"))
