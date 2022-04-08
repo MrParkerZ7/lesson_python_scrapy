@@ -18,7 +18,7 @@ NEWSPIDER_MODULE = 'training_python_scrapy.spiders'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
-
+# CHROME_DRIVER_PATH = 'D:/env_storeage/chrome_driver/chromedriver'
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 

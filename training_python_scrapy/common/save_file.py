@@ -1,12 +1,13 @@
 from typing import List
+from parsel.selector import SelectorList
 
 
-def save_lines_to_file(Class,  links):
+def save_links_to_file(Class,  links: SelectorList):
     lines: List[str] = []
 
     for link in links:
-        url: str = link.get()
-        lines.append(url)
+        url: str = link.getall()
+        lines.append(*url)
 
     with open(f"output/{Class.name}-{Class.fileNo}.txt", 'w') as file:
         file.write('\n'.join(lines))

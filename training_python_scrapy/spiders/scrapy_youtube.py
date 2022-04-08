@@ -10,6 +10,6 @@ class RedditScrapy(scrapy.Spider):
     fileNo: int = 0
 
     def parse(self, response: HtmlResponse, **kwargs):
-        save_lines_to_file(self, response.xpath("//a/@href"))
-        save_lines_to_file(self, response.xpath("//link/@href"))
-        save_lines_to_file(self, response.xpath("//img/@src"))
+        save_links_to_file(self, response.xpath("//a/@href"))
+        save_links_to_file(self, response.xpath("//link/@href"))
+        save_links_to_file(self, response.xpath("//img/@src"))
