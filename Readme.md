@@ -15,6 +15,6 @@ $ scrapy crawl reddit
 $ scrapy crawl github
 $ scrapy crawl youtube
 $ scrapy crawl youtube_selenium
-$ scrapy crawl youtube_selenium_yield
 $ scrapy crawl youtube_selenium_yield -O output/youtube_selenium_yield.json
+$ scrapy crawl youtube_selenium_item -O output/youtube_selenium_item.json
 ```
