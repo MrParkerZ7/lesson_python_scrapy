@@ -6,10 +6,11 @@ from scrapy.http.response.html import HtmlResponse
 from selenium import webdriver
 from chromedriver_py import binary_path
 from webdriver_manager.chrome import ChromeDriverManager
+from parsel.selector import SelectorList
 
 
 class RedditScrapy(scrapy.Spider):
-    name: str = 'youtube_selenium'
+    name: str = 'youtube_selenium_yield'
     fileNo: int = 0
 
     def start_requests(self):
@@ -21,12 +22,13 @@ class RedditScrapy(scrapy.Spider):
         driver.get('https://www.lazada.com.ph/shop-laptops/')
         link_elements = driver.find_elements_by_xpath(
             '//*[@data-qa-locator="product-item"]//a[text()]')
-        # link_elements = driver.find_elements_by_xpath(
-        # '//a/@href')
 
         for link in link_elements:
             yield scrapy.Request(link.get_attribute('href'), callback=self.parse)
         driver.quit()
 
     def parse(self, response: HtmlResponse, **kwargs):
-        save_links_to_file(self, response.xpath("//img/@src"))
+        links: SelectorList = response.xpath('//img[@class="pdp-mod-common-image gallery-preview-panel__image"]/@src')
+        yield {
+            'src':  links.getall(),
+        }

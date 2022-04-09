@@ -14,5 +14,7 @@ $ pip3 install -r requirements.txt
 $ scrapy crawl reddit
 $ scrapy crawl github
 $ scrapy crawl youtube
-$ scrapy crawl youtube_se
+$ scrapy crawl youtube_selenium
+$ scrapy crawl youtube_selenium_yield
+$ scrapy crawl youtube_selenium_yield -O output/youtube_selenium_yield.json
 ```
