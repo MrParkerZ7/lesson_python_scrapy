@@ -2,6 +2,7 @@ from cgitb import html
 from turtle import ht
 import scrapy
 from scrapy.http.response.html import HtmlResponse
+from parsel.selector import SelectorList, Selector
 
 
 class RedditScrapy(scrapy.Spider):
@@ -9,7 +10,7 @@ class RedditScrapy(scrapy.Spider):
     start_urls: str = ['https://www.reddit.com/r/cats', ]
 
     def parse(self, response: HtmlResponse):
-        links = response.xpath("//img/@src")
+        links: SelectorList[Selector] = response.xpath("//img/@src")
         html = ""
 
         for link in links:
