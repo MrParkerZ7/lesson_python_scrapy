@@ -1,10 +1,7 @@
-from typing import List
 import scrapy
-from scrapy.utils.project import get_project_settings
 from training_python_scrapy.common.save_file import *
 from scrapy.http.response.html import HtmlResponse
 from selenium import webdriver
-from chromedriver_py import binary_path
 from webdriver_manager.chrome import ChromeDriverManager
 
 

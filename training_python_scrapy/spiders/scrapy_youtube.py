@@ -1,4 +1,3 @@
-from typing import List
 import scrapy
 from training_python_scrapy.common.save_file import *
 from scrapy.http.response.html import HtmlResponse

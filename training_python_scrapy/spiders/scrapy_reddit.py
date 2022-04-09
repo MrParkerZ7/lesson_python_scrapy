@@ -1,5 +1,3 @@
-from cgitb import html
-from turtle import ht
 import scrapy
 from scrapy.http.response.html import HtmlResponse
 from parsel.selector import SelectorList, Selector
